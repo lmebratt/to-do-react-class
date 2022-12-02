@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { ToDoCounter } from './ToDoCounter';
+import { ToDoSearch } from './ToDoSearch';
+import { ToDoList } from './ToDoList';
+import { ToDoItem } from './ToDoItem';
+import { CreateToDoButton } from './CreateToDoButton';
+
+const toDos = [
+  { text: 'Cortar cebolla', completed: false },
+  { text: 'Curso de React', completed: false },
+  { text: 'Llrar con llorona', completed: false }
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Platzi
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <ToDoCounter />
+
+      <ToDoSearch />
+
+      <ToDoList>
+        {toDos.map(toDo => (
+          <ToDoItem key={toDo.text} text={toDo.text} />
+        ))}
+      </ToDoList>
+
+      <CreateToDoButton />
+    </React.Fragment>
   );
 }
 
-export default App;
+export { App };
