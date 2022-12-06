@@ -7,7 +7,7 @@ import { ToDoItem } from './ToDoItem';
 import { CreateToDoButton } from './CreateToDoButton';
 
 const toDos = [
-  { text: 'Cortar cebolla', completed: false },
+  { text: 'Cortar cebolla', completed: true },
   { text: 'Curso de React', completed: false },
   { text: 'Llrar con llorona', completed: false }
 ];
@@ -21,7 +21,7 @@ function App() {
 
       <ToDoList>
         {toDos.map(toDo => (
-          <ToDoItem key={toDo.text} text={toDo.text} />
+          <ToDoItem completed={toDo.completed} key={toDo.text} text={toDo.text} />
         ))}
       </ToDoList>
 
