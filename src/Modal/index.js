@@ -1,3 +1,4 @@
+import React from 'react';
 import PortalReactDOM from 'react-dom';
 import './Modal.css'
 

@@ -1,34 +1,36 @@
 import React from "react";
 import { toDoContext } from "../toDoContext";
+import "./ToDoForm.css"
 
 function ToDoForm() {
-    let [newToDoValue, setNewToDoValue] = React.useState('')
-    const { addToDo } = React.useContext(toDoContext)
+    const [newToDoValue, setNewToDoValue] = React.useState('')
+    const { addToDo, setOpenModal } = React.useContext(toDoContext)
 
     const onChange = (e) => {
-        setNewToDoValue = e.target.value
+        setNewToDoValue(e.target.value)
     }
 
     const onCancel = () => {
-        // pendiente
+        setOpenModal(false)
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        addToDo(newToDoValue)
+        addToDo(newToDoValue);
+        setOpenModal(false)
     }
 
     return(
         <form onSubmit={onSubmit}>
-            <label>...</label>
+            <label>Escribe tu nuevo ToDo</label>
             <textarea
                 value={newToDoValue}
                 onChange={onChange}
                 placeholder="Cortar cebolla para el almuerzo"
             />
-            <div>
-                <button type="button" onClick={onCancel}>Cancelar</button>
-                <button type="submit" onClick={onSubmit}>Añadir</button>
+            <div className="toDoForm-buttonContainer">
+                <button className="toDoForm-button toDoForm-button--cancel" type="button" onClick={onCancel}>Cancelar</button>
+                <button className="toDoForm-button toDoForm-button--add" type="submit" onClick={onSubmit}>Añadir</button>
             </div>
         </form>
     );
